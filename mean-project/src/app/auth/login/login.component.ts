@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { Subscription } from "rxjs";
 
-import { AuthService } from '../auth.service';
+import { AuthService } from "../auth.service";
 
 @Component({
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit, OnDestroy {
   isLoading = false;
@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService) {}
 
   ngOnInit() {
-    this.authStatusSub = this.authService
-      .getAuthStatusListener()
-      .subscribe((authStatus) => {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
         this.isLoading = false;
-      });
+      }
+    );
   }
 
   onLogin(form: NgForm) {
