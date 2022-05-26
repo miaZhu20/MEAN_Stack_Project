@@ -8,11 +8,8 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "downlevelIteration": true,
-    "importHelpers": true,
     "target": "es5",
-    "module": "esnext",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["es2020", "dom"]
+    "lib": ["esnext", "dom"]
   }
 }
