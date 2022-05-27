@@ -10,8 +10,8 @@
 
 ## How to
 1. Before installing this app, you need to have an account with MongoDB Atlas (it's free).
-2. Download the package and run **npm install** in the __mean-project__ folder. This command will install all the packages needed.
-3. In __backend__ folder, _app.js_** file, change the connection string to your own connection string(from your own MongoDB Atlas) as indicated below.
+2. Download the package and run ######*npm install* in the __mean-project__ folder. This command will install all the packages needed.
+3. In __backend__ folder, **_app.js_** file, change the connection string to your own connection string(from your own MongoDB Atlas) as indicated below.
 ```javascript
 mongoose
   .connect(
