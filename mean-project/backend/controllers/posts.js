@@ -6,22 +6,22 @@ exports.createPost = (req, res, next) => {
     title: req.body.title,
     content: req.body.content,
     imagePath: url + "/images/" + req.file.filename,
-    creator: req.userData.userId
+    creator: req.userData.userId,
   });
   post
     .save()
-    .then(createdPost => {
+    .then((createdPost) => {
       res.status(201).json({
         message: "Post added successfully",
         post: {
           ...createdPost,
-          id: createdPost._id
-        }
+          id: createdPost._id,
+        },
       });
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).json({
-        message: "Creating a post failed!"
+        message: "Creating a post failed!",
       });
     });
 };
@@ -37,19 +37,21 @@ exports.updatePost = (req, res, next) => {
     title: req.body.title,
     content: req.body.content,
     imagePath: imagePath,
-    creator: req.userData.userId
+    creator: req.userData.userId,
   });
   Post.updateOne({ _id: req.params.id, creator: req.userData.userId }, post)
-    .then(result => {
-      if (result.n > 0) {
+    .then((result) => {
+      if (result.modifiedCount > 0) {
         res.status(200).json({ message: "Update successful!" });
+      } else if (result.modifiedCount === 0) {
+        res.status(200).json({ message: "Did not make any changes!" });
       } else {
-        res.status(401).json({ message: "Not authorized!" });
+        res.status(401).json({ message: "Not authorized!!!!!!!" });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).json({
-        message: "Couldn't udpate post!"
+        message: "Couldn't udpate post!",
       });
     });
 };
@@ -63,53 +65,52 @@ exports.getPosts = (req, res, next) => {
     postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
   postQuery
-    .then(documents => {
+    .then((documents) => {
       fetchedPosts = documents;
       return Post.count();
     })
-    .then(count => {
+    .then((count) => {
       res.status(200).json({
         message: "Posts fetched successfully!",
         posts: fetchedPosts,
-        maxPosts: count
+        maxPosts: count,
       });
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).json({
-        message: "Fetching posts failed!"
+        message: "Fetching posts failed!",
       });
     });
 };
 
 exports.getPost = (req, res, next) => {
   Post.findById(req.params.id)
-    .then(post => {
+    .then((post) => {
       if (post) {
         res.status(200).json(post);
       } else {
         res.status(404).json({ message: "Post not found!" });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).json({
-        message: "Fetching post failed!"
+        message: "Fetching post failed!",
       });
     });
 };
 
 exports.deletePost = (req, res, next) => {
   Post.deleteOne({ _id: req.params.id, creator: req.userData.userId })
-    .then(result => {
-      console.log(result);
-      if (result.n > 0) {
+    .then((result) => {
+      if (result.deletedCount > 0) {
         res.status(200).json({ message: "Deletion successful!" });
       } else {
         res.status(401).json({ message: "Not authorized!" });
       }
     })
-    .catch(error => {
+    .catch((error) => {
       res.status(500).json({
-        message: "Deleting posts failed!"
+        message: "Deleting posts failed!",
       });
     });
 };
