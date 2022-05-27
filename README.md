@@ -12,8 +12,16 @@
 1. Before installing this app, you need to have an account with MongoDB Atlas (it's free).
 2. Download the package and run **npm install** in the __mean-project__ folder. This command will install all the packages needed.
 3. In __backend__ folder, _app.js_** file, change the connection string to your own connection string(from your own MongoDB Atlas) as indicated below.
-> mongoose
->   .connect(
->     "YOUR OWN CONNECTION STRING"
->   )
+```javascript
+mongoose
+  .connect(
+    "mongodb+srv://yibingzhu0:sansui940705@cluster0.x5i4vrq.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("Connected to database!");
+  })
+  .catch(() => {
+    console.log("Connection failed!");
+  });
+```
 4. After it is done installing, run **ng serve** to start the front end, run **npm run start:server** to connect to the MongoDB database.
