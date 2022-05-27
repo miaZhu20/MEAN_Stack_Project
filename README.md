@@ -15,7 +15,7 @@
 ```javascript
 mongoose
   .connect(
-    "**YOUR OWN CONNECTION STRING**"
+    "YOUR OWN CONNECTION STRING"
   )
   .then(() => {
     console.log("Connected to database!");
