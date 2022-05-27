@@ -15,7 +15,7 @@
 ```javascript
 mongoose
   .connect(
-    "mongodb+srv://yibingzhu0:sansui940705@cluster0.x5i4vrq.mongodb.net/?retryWrites=true&w=majority"
+    "**YOUR OWN CONNECTION STRING**"
   )
   .then(() => {
     console.log("Connected to database!");
