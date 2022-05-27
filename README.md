@@ -1,5 +1,7 @@
 # MEAN_Stack_Project
 <img width="1000" alt="1" src="startpage.png">
+<img width="1000" alt="1" src="postlist.png">
+
 
 ## Table of contents
 * [General info](#general-info)
